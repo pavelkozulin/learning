@@ -16,15 +16,16 @@ def fight(text):
     'Left side wins!'
     """
     
-    war_dict = {'w': 4, 'p': 3, 'b': 2, 's': 1, 'm': -4, 'q': -3, 'd': -2, 'z': -1, 'y': 2}
-    b = sum([war_dict[y]
-        for y in text
-        if y in war_dict
-        ])
-    if b > 0:
+    Left = {'w': 4, 'p': 3, 'b': 2, 's': 1, 'y': 3}
+    Right = {'m': 4, 'q': 3, 'd': 2, 'z': 1, 'y': 1}
+    Center = {'a': 1, 'e': 1, 'i': 1, 'o': 1, 'u': 1, 'y': 1}
+    
+    if sum(Left.values()) > sum(Right.values()) and sum(Left.values()) > sum(Center.values()):
         result = 'Left side wins!'
-    elif b < 0:
+    elif sum(Right.values()) > sum(Left.values()) and sum(Right.values()) > sum(Center.values()):
         result = 'Right side wins!'
+    elif sum(Center.values()) > sum(Left.values()) and sum(Center.values()) > sum(Right.values()):
+        result = 'Center side wins!'
     else:
         result = "Let's fight again!"
     return result
