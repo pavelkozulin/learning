@@ -16,21 +16,40 @@ def main(numbers):
     2
     """
     
-    low = 0 # индекс первого элемента
-    
-    high = len(main) - 1  # индекс последнего элемента
-    
-    mid = (low + high) // 2 # индекс серединного элемента
-    
-    
-    while main[mid - 1] == main[mid] or main[mid] == main[mid + 1]:      # пока хотя бы пара из элеиентов с индексами mid-1, mid, mid+1 булут равны, то:
-        if main[mid] == main[mid + 1] and len(main[mid: high]) % 2 == 0:  # если элеиенты с индексами mid+1 и mid равны И длина от mid до high есть четное число (то есть не содержит single element)
-            high = mid                                                    # переписываем последний элемент как срединный
-        if main[mid] == main[mid + 1] and len(main[mid: high]) % 2 == 1:  # если элеиенты с индексами mid+1 и mid равны И длина от mid до high есть НЕчетное число (то есть содержит single element)
-            low = mid                                                     # переписываем первый элемент как срединный
-        if main[mid] == main[mid - 1] and len(main[low: mid]) % 2 == 0:   # если элеиенты с индексами mid-1 и mid равны И длина от low до mid есть четное число (то есть не содержит single element)
-            low = mid                                                     # переписываем первый элемент как срединный
-        if main[mid] == main[mid - 1] and len(main[mid: high]) % 2 == 1:  # если элеиенты с индексами mid-1 и mid равны И длина от low до mid есть НЕчетное число (то есть содержит single element)
-            high = mid                                                    # переписываем последний элемент как срединный
-        mid = (low + high) // 2                                           # считаем новый индекс серединного элемента
-    return main[mid] 
+    if main ==[]:
+        result = ''
+    elif len(main) == 1:
+        result = main[0]
+    else:
+        low = 0
+        high = len(main) - 1
+        mid = (high - low) // 2
+        while True:
+            if main[mid - 1] != main[mid] and main[mid] != main[mid + 1]:
+                result = main[mid]
+                print('xyz_mid')
+                break
+            if high - low == 2:
+                if main[mid - 1] == main[mid]:
+                    result = main[mid + 1]
+                if main[mid] == main[mid + 1]:
+                    result = main[mid - 1]
+                print('len = 3')
+                break
+            if len(main) > 3:
+                print('indexes', low, mid, high)
+                print('values', main[low], main[mid], main[high])
+                if (len(main) - 1) % 4 == 0:
+                    print('%4=0') 
+                    if main[mid] == main[mid + 1]:
+                        low = mid
+                    else:
+                        high = mid
+                if (len(main) - 1) % 4 == 2:
+                    print('%4=2') 
+                    if main[mid] == main[mid - 1]:
+                        low = mid + 1
+                    else:
+                        high = mid - 1
+                mid = low + (high - low) // 2
+    return relult
