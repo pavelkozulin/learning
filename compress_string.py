@@ -13,31 +13,28 @@ def compress_string(text):
     >>> compress_string('')
     ''
     """
-    b = ''
-    i, j = 1, 1
+    result = ''
+    i, counter = 1, 1
     if len(text) == 0:
-        b = ''
-    else:
-        while True:
-            #print('i, j', i, j)
-            if i == len(text):
-                if j > 1:
-                    b += text[i-1] + str(j)
-                else:
-                    b += text[i-1]
-                #print('max_len')
-                break
-            if text[i] != text[i - 1]:
-                if j > 1:
-                    b += text[i - 1] + str(j)
-                else:
-                    b += text[i - 1]    
-                j = 1
-                #print('ab', b)
+        result = ''
+        return result
+    while True:
+        if i == len(text):
+            if counter > 1:
+                result += text[i-1] + str(counter)
             else:
-                j += 1
-            i += 1
-    return b
+                result += text[i-1]
+            break
+        if text[i] != text[i - 1]:
+            if counter > 1:
+                result += text[i - 1] + str(counter)
+            else:
+                result += text[i - 1]
+            counter = 1
+        else:
+            counter += 1
+        i += 1
+    return result
 
 if __name__ == '__main__':
     import doctest
