@@ -18,23 +18,27 @@ def Most_ferquent_element(array):
     2
     >>> Most_ferquent_element((1,2,3))
     3
+    >>> Most_ferquent_element((1))
+    1
 
     '''
-
-    D_to_F = {}
+    if len(str(array)) == 1:
+        return array
+    element_frequency_dict = {}
     for i in array:
-        if i not in D_to_F:
-            D_to_F[i] = 1
-        else: D_to_F[i] += 1
+        if i not in element_frequency_dict:
+            element_frequency_dict[i] = 1
+        else: element_frequency_dict[i] += 1
     max_count = 1
-    max_digit = 1
-    for i in D_to_F:
-        if D_to_F[i] > max_count:
-            max_count = D_to_F[i]
-            max_digit = i
-        if D_to_F[i] == max_count and max_digit < i:
-            max_digit = i
-    return max_digit
+    max_element = 1
+
+    for i in element_frequency_dict:
+        if element_frequency_dict[i] > max_count:
+            max_count = element_frequency_dict[i]
+            max_element = i
+        if element_frequency_dict[i] == max_count and max_element < i:
+            max_element = i
+    return max_element
 
 if __name__ == '__main__':
     import doctest
