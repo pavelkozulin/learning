@@ -1,3 +1,5 @@
+import collections
+
 def Most_ferquent_element(array):
     '''
     Дан массив a из n целых чисел. Напишите программу, которая найдет число, которое чаще других встречается в массиве.
@@ -27,7 +29,6 @@ def Most_ferquent_element(array):
 
     if len(str(array)) == 1:
         return array
-    import collections
     element_frequency_dict = collections.Counter()
     for i in array:
         element_frequency_dict[i] += 1
