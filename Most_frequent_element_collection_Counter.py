@@ -29,9 +29,8 @@ def Most_ferquent_element(array):
 
     if len(str(array)) == 1:
         return array
-    element_frequency_dict = collections.Counter()
-    for i in array:
-        element_frequency_dict[i] += 1
+    element_frequency_dict = collections.Counter(array)
+
     max_count = 1
     max_element = 1
 
