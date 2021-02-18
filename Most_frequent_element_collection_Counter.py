@@ -12,22 +12,22 @@ def Most_ferquent_element(array):
     Формат вывода
     Выведите единственное число x, наибольшее из чисел, которое чаще других встречается в массиве a.
 
-    >>> Most_ferquent_element((1,1,2))
+    >>> Most_ferquent_element([1,1,2])
     1
-    >>> Most_ferquent_element((1,1,2,2))
+    >>> Most_ferquent_element([1,1,2,2])
     2
-    >>> Most_ferquent_element((2,2,1,1))
+    >>> Most_ferquent_element([2,2,1,1])
     2
-    >>> Most_ferquent_element((1,2,3))
+    >>> Most_ferquent_element([1,2,3])
     3
-    >>> Most_ferquent_element((0))
-    0
-    >>> Most_ferquent_element((-1,1,-1))
+    >>> Most_ferquent_element([0])
+    [0]
+    >>> Most_ferquent_element([-1,1,-1])
     -1
 
     '''
 
-    if len(str(array)) == 1:
+    if len(array) == 1:
         return array
     element_frequency_dict = collections.Counter(array)
 
