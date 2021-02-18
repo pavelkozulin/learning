@@ -13,13 +13,9 @@ def words_to_marks(word):
     96
     """
 
-    letters = string.ascii_lowercase
-    numbers = [i for i in range(1, 27)]
-    letter_number_dict = dict(zip(letters, numbers))
+    letter_number_dict = dict(zip(string.ascii_lowercase, [i for i in range(1, 27)]))
 
-
-    return sum([letter_number_dict[i] for i in word])
-
+    return sum((letter_number_dict[i] for i in word))
 
 if __name__ == '__main__':
     import doctest
