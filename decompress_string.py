@@ -12,28 +12,31 @@ def decompress_string(text):
     'aaabbbbcddd'
     """
 
-    if text == '':
-        b = ''
-    else:
-        b = ''
-        i = 1
-        while True:
-            print('i', i)
-            print('text[i]', text[i])
-            if text[i].isdigit():
-                b += text[i - 1] * int(text[i])
-                print('DIGIT, b', b)
-            elif i == len(text):
-                b += text[i - 1] * text[i]
-                print('lenmax')
-                break
+    result = ''
+    last_letter = ''
+    digit_gather = ''
+
+    for i in text:
+        #print('i = ', i)
+        if i.isalpha():
+            #print('isalpha')
+            if digit_gather == '':
+                result += last_letter
             else:
-                b += text[i]
-                print('else, b', b)
-            i += 1
-
-    return b
-
+                result += last_letter * int(digit_gather)
+            #print('result: ', result)
+            last_letter = i
+            digit_gather = ''
+        else:
+            #print('isdigit')
+            digit_gather += i
+            #print('digit_gather: ', digit_gather)
+    if digit_gather == '':
+        result += last_letter
+    else:
+        result += last_letter * int(digit_gather)
+    #print('result: ', result)
+    return result
 
 if __name__ == '__main__':
     import doctest
