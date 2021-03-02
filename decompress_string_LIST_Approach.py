@@ -20,7 +20,7 @@ def decompress_string(text):
         #print('i = ', i)
         if i.isalpha():
             #print('isalpha')
-            if buffer == []:
+            if not buffer:
                 result.append(last_letter)
             else:
                 result.append(last_letter * (int(''.join(buffer))))
@@ -31,13 +31,13 @@ def decompress_string(text):
             #print('isdigit')
             buffer.append(i)
             #print('digit_gather: ', digit_gather)
-    if buffer == []:
+    if not buffer:
         result.append(last_letter)
     else:
         result.append(last_letter * (int(''.join(buffer))))
     #print('result: ', result)
     final = ''.join(result)
-    return final 
+    return final
 
 if __name__ == '__main__':
     import doctest
