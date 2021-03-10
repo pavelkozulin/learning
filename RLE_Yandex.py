@@ -13,24 +13,49 @@ def RLE(text):
     Формат вывода:
     Выведите длину исходной строки.
 
-    >>> RLE('A2BCD2')
-    '6'
-    >>> RLE('ABC11D')
-    '14'
+    >>> RLE('A')
+    1
+    >>> RLE('A2')
+    2
+    >>> RLE('AB')
+    2
+    >>> RLE('A12B')
+    13
+    >>> RLE('AB12')
+    13
+    >>> RLE('A2B2C2')
+    6
     """
 
-    result, buffer = [], ['0']
+    result, buffer = [], []
     for i in text:
         if i.isalpha():
-            print('alpha, i = ', i)
-            result.append(''.join(buffer))
-            result.append(-1)
-            result.append(1)
-            print('result = ', result)
-            buffer = ['0']
+            #print('case isalpha, i = ', i)
+            if buffer != []:
+                #print('subcase buffer != []')
+                a = ''.join((map(str, buffer)))
+                result.append(int(a))
+                #result.append(-1)
+                #result.append(1)
+                buffer = []
+                #print('result = ', result)
+            else:
+                #print('subcase buffer == []')
+                result.append(1)
+                #print('result = ', result)
         else:
-            buffer.append(i)
-            print('buffer = ', buffer)
+            #print('case isdigit, i = ', i)
+            buffer.append(int(i))
+            #print('buffer = ', buffer)
+    #print('buffer_exit_FOR = ', buffer)
+    if buffer != []:
+        a = ''.join((map(str, buffer)))
+        result.append(int(a))
+        result.append(-1)
+    else:
+        pass
+    #print('result = ', result)
+    #print(sum(result))
     return sum(result)
 
 if __name__ == '__main__':
