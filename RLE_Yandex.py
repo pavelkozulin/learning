@@ -30,32 +30,20 @@ def RLE(text):
     result, buffer = [], []
     for i in text:
         if i.isalpha():
-            #print('case isalpha, i = ', i)
             if buffer != []:
-                #print('subcase buffer != []')
-                a = ''.join((map(str, buffer)))
+                a = ''.join(buffer)
                 result.append(int(a))
-                #result.append(-1)
-                #result.append(1)
                 buffer = []
-                #print('result = ', result)
             else:
-                #print('subcase buffer == []')
                 result.append(1)
-                #print('result = ', result)
         else:
-            #print('case isdigit, i = ', i)
-            buffer.append(int(i))
-            #print('buffer = ', buffer)
-    #print('buffer_exit_FOR = ', buffer)
+            buffer.append(i)
     if buffer != []:
         a = ''.join((map(str, buffer)))
         result.append(int(a))
         result.append(-1)
     else:
         pass
-    #print('result = ', result)
-    #print(sum(result))
     return sum(result)
 
 if __name__ == '__main__':
