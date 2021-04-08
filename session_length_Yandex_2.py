@@ -9,8 +9,10 @@ def most_sessions(sessions):
         В первой строке входных данных записано целое число n (1 ≤ n ≤ 1000).
         Далее в n строках записано через пробел по два целых числа si и fi (0 ≤ si < fi ≤ 1 000 000 000).
 
-    >>> most_sessions([[0,1000000],[1,1000000],[2,1000000]])
+    >>> most_sessions([[0,5],[1,2],[2,3]])
     2
+    >>> most_sessions([[0,5],[1,2]])
+    1
     '''
     dict_all = {}
     for i in sessions:
@@ -19,5 +21,13 @@ def most_sessions(sessions):
                 dict_all[k] += 1
             else:
                 dict_all[k] = 1
-    print(dict_all)
-most_sessions([[0,10],[2,10]])
+    max_count = 1
+    for j in dict_all:
+        if dict_all[j] > max_count:
+            max_count = dict_all[j]
+            min_element = j
+    return min_element
+
+if __name__ == '__main__':
+    import doctest
+    doctest.testmod()
