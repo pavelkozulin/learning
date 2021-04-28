@@ -9,7 +9,7 @@ def most_sessions(sessions):
         В первой строке входных данных записано целое число n (1 ≤ n ≤ 1000).
         Далее в n строках записано через пробел по два целых числа si и fi (0 ≤ si < fi ≤ 1 000 000 000).
 
-    >>> most_sessions([[0,5],[1,3],[2,3]])
+    >>> most_sessions([[2,4],[1,2],[2,4]])
     2
     >>> most_sessions([[0,5],[1,2]])
     1
@@ -19,10 +19,10 @@ def most_sessions(sessions):
     for i in sessions:
         si_list.append(i[0])
         fi_list.append(i[1])
-    full_list = si_list + fi_list
+    full_list = sorted(si_list + fi_list)
     counter = 0
     final_counter = 0
-    for j in range(min(full_list), max(full_list)):
+    for j in full_list:
         if j in si_list:
             counter += 1
         if j in fi_list:
