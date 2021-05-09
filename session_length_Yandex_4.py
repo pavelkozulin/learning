@@ -1,3 +1,5 @@
+max_sessions = [[i, 1000000000] for i in range (0, 1000)]
+
 def most_sessions(sessions):
     '''
     Вам дана история сессий на некотором вымышленном сервисе. Каждая сессия характеризуется временем начала и временем окончания si и fi,
@@ -13,23 +15,23 @@ def most_sessions(sessions):
     2
     >>> most_sessions([[0,5],[1,2]])
     1
+    >>> most_sessions(max_sessions)
+    999
     '''
 
-    si_list, fi_list, full_list = [], [], []
-    for i in sessions:
-        si_list.append(i[0])
-        fi_list.append(i[1])
+    si_list = [(s, True) for s, f in sessions]
+    fi_list = [(f, False) for s, f in sessions]
     full_list = sorted(si_list + fi_list)
     counter = 0
     final_counter = 0
-    for j in full_list:
-        if j in si_list:
+    for t, b in full_list:
+        if b:
             counter += 1
-        if j in fi_list:
+        else:
             counter -= 1
         if final_counter < counter:
             final_counter = counter
-            time = j
+            time = t
     return time
 
 if __name__ == '__main__':
